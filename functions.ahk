@@ -7,13 +7,11 @@
  */
 quickRunApp(dir) {
     handle := WinExist("ahk_exe " dir)
-    if (handle) {
-        WinActivate(handle)
-        WinShow(handle)
-    }
-    else {
+    if (!handle) {
         handle := Run(dir)
     }
+    WinActivate(handle)
+    WinShow(handle)
     return handle
 }
 
