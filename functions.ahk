@@ -16,13 +16,30 @@ quickRunApp(dir) {
 }
 
 /**
+ * 切换窗口 激活/最小化 状态
+ *
+ * @params {string} dir app.exe dir
+ * @return {number} handle
+ */
+toggleApp(dir) {
+    handle := WinActive("ahk_exe " dir)
+    if (handle !== 0) {
+        WinMinimize(handle)
+    }
+    else {
+        handle := quickRunApp(dir)
+    }
+    return handle
+}
+
+/**
  * 复制资源管理器当前目录地址到剪贴板
  *
  * @params {string} prefix 前缀
  * @return {string} path raw path
  */
 copyPath(prefix := "", quotation := False) {
-    winInfo := WingetText("A")
+    winInfo := WinGetText("A")
     infoArr := StrSplit(winInfo, "`n")
     For info in infoArr {
         if InStr(info, "Address:") {

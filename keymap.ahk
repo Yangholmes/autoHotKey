@@ -32,14 +32,14 @@ Return
  * open MobaXterm (Win + Alt + t)
  */
 #!t::
-quickRunApp("C:\Program Files (x86)\Mobatek\MobaXterm\MobaXterm.exe")
+toggleApp("C:\Program Files (x86)\Mobatek\MobaXterm\MobaXterm.exe")
 Return
 
 /**
  * open wechat (Win + Shift + w)
  */
 #+w::
-quickRunApp("C:\Program Files (x86)\Tencent\WeChat\WeChat.exe")
+toggleApp("C:\Program Files (x86)\Tencent\WeChat\WeChat.exe")
 Return
 
 /**
@@ -62,4 +62,27 @@ Return
 #!Up::WinSetAlwaysOnTop(1, "A")
 Return
 #!Down::WinSetAlwaysOnTop(0, "A")
+Return
+
+/**
+ * 拓展 MobaXterm 快捷键
+ * 复制选中文本
+ */
+!+c::
+prossName := WinGetProcessName("A")
+if (prossName == "MobaXterm.exe") {
+    control := ControlGetFocus("A")
+    text := SendMessage(0x301, , , control, "A")
+}
+Return
+
+/**
+ * 拓展 MobaXterm 快捷键
+ * 粘贴选中文本
+ */
+!+v::
+prossName := WinGetProcessName("A")
+if (prossName == "MobaXterm.exe") {
+    MouseClick("Right")
+}
 Return
