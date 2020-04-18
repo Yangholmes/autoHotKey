@@ -18,7 +18,7 @@ Return
 */
 #t::
 copyPath("cd ", True)
-Run("C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\System Tools\Windows Terminal.lnk")
+Run("C:\Users\Yangholmes\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\System Tools\Windows Terminal.lnk")
 Return
 
 /**
